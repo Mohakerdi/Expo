@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3e4ad28d-1e36-4f6e-9d6f-5fc45981faf4}</ProjectGuid>
+    <RootNamespace>MallProjectOpenGL</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)Dependencies\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)Dependencies\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)Dependencies\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)Dependencies\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket;include\Mall\Library;</AdditionalIncludeDirectories>
+      <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;;include\Mall\Electronic;include\Mall\Library;include\Mall\Supermarket</AdditionalIncludeDirectories>
+      <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket;include\Mall\Library</AdditionalIncludeDirectories>
+      <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Library;include\Mall\Supermarket</AdditionalIncludeDirectories>
+      <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(CoreLibraryDependencies);glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Expo\AdventureSection.h" />
+    <ClInclude Include="include\Expo\Car\DrivableCar.h" />
+    <ClInclude Include="include\Expo\Car\Wheel.h" />
+    <ClInclude Include="include\Expo\drabzen.h" />
+    <ClInclude Include="include\Expo\buildings.h" />
+    <ClInclude Include="include\Expo\Electronic\electronic_room.h" />
+    <ClInclude Include="include\Expo\Electronic\laptop.h" />
+    <ClInclude Include="include\Expo\Electronic\tv.h" />
+    <ClInclude Include="include\Expo\HeritageSection.h" />
+    <ClInclude Include="include\Expo\InnovationSection.h" />
+    <ClInclude Include="include\Expo\Library\book.h" />
+    <ClInclude Include="include\Expo\Library\book2.h" />
+    <ClInclude Include="include\Expo\Library\booklab.h" />
+    <ClInclude Include="include\Expo\Library\ceil.h" />
+    <ClInclude Include="include\Expo\Library\clock.h" />
+    <ClInclude Include="include\Expo\Library\counterL.h" />
+    <ClInclude Include="include\Expo\Library\floor.h" />
+    <ClInclude Include="include\Expo\Library\LibraryRoom.h" />
+    <ClInclude Include="include\Expo\Library\rectable.h" />
+    <ClInclude Include="include\Expo\Library\shelf.h" />
+    <ClInclude Include="include\Expo\Library\signboard.h" />
+    <ClInclude Include="include\Expo\Library\table.h" />
+    <ClInclude Include="include\Expo\Library\wall.h" />
+    <ClInclude Include="include\Expo\Resturant\decorated_wall\DecoratedWall.h" />
+    <ClInclude Include="include\Expo\Resturant\RestaurantRoom.h" />
+    <ClInclude Include="include\Expo\Resturant\window\ResturantWindow.h" />
+    <ClInclude Include="include\Expo\Room.h" />
+    <ClInclude Include="include\Expo\SectionBase.h" />
+    <ClInclude Include="include\Expo\SkyBox.h" />
+    <ClInclude Include="include\Expo\VelocitySection.h" />
+    <ClInclude Include="include\Expo\World.h" />
+    <ClInclude Include="include\objects\Cylinder.h" />
+    <ClInclude Include="include\objects\Box.h" />
+    <ClInclude Include="include\core.h" />
+    <ClInclude Include="include\core\Application.h" />
+    <ClInclude Include="include\core\Window.h" />
+    <ClInclude Include="include\objects\MovingDoor.h" />
+    <ClInclude Include="include\objects\Square.h" />
+    <ClInclude Include="include\Scene\CameraController.h" />
+    <ClInclude Include="include\utils\ShaderManager.h" />
+    <ClInclude Include="include\utils\TextureManager.h" />
+    <ClInclude Include="include\opengl\EBO.h" />
+    <ClInclude Include="include\opengl\Shader.h" />
+    <ClInclude Include="include\opengl\Texture.h" />
+    <ClInclude Include="include\opengl\VAO.h" />
+    <ClInclude Include="include\opengl\VBO.h" />
+    <ClInclude Include="include\opengl\VBOLayout.h" />
+    <ClInclude Include="include\Expo\Resturant\Chair.h" />
+    <ClInclude Include="include\objects\Object.h" />
+    <ClInclude Include="include\Scene\Camera.h" />
+    <ClInclude Include="include\Scene\Lights\DirectionalLight.h" />
+    <ClInclude Include="include\Scene\Lights\Light.h" />
+    <ClInclude Include="include\Scene\Lights\LightHelper.h" />
+    <ClInclude Include="include\Scene\Model\mesh.h" />
+    <ClInclude Include="include\Scene\Model\model.h" />
+    <ClInclude Include="include\Scene\Model\ModelObject.h" />
+    <ClInclude Include="include\Scene\Lights\PointLight.h" />
+    <ClInclude Include="include\Scene\Renderer.h" />
+    <ClInclude Include="include\Scene\Scene.h" />
+    <ClInclude Include="include\Scene\Lights\SpotLight.h" />
+    <ClInclude Include="include\utils\GLErrorManager.h" />
+    <ClInclude Include="include\utils\myImGuiManager.h" />
+    <ClInclude Include="include\utils\StringManager.h" />
+    <ClInclude Include="include\Expo\Expo.h" />
+    <ClInclude Include="include\Expo\Electronic\table_electronic.h" />
+    <ClInclude Include="include\Expo\Car\playerCar.h" />
+    <ClInclude Include="src\DebugTriangle.h" />
+    <ClInclude Include="src\Mall\Library\book.h" />
+    <ClInclude Include="src\Mall\Library\book2.h" />
+    <ClInclude Include="src\Mall\Library\booklab.h" />
+    <ClInclude Include="src\Mall\Library\ceil.h" />
+    <ClInclude Include="src\Mall\Library\clock.h" />
+    <ClInclude Include="src\Mall\Library\counter.h" />
+    <ClInclude Include="src\Mall\Library\floor.h" />
+    <ClInclude Include="src\Mall\Library\LibraryRoom.h" />
+    <ClInclude Include="src\Mall\Library\rectable.h" />
+    <ClInclude Include="src\Mall\Library\shelf.h" />
+    <ClInclude Include="src\Mall\Library\signboard.h" />
+    <ClInclude Include="src\Mall\Library\table.h" />
+    <ClInclude Include="src\Mall\Library\wall.h" />
+    <ClInclude Include="vendor\imGui\imconfig.h" />
+    <ClInclude Include="vendor\imGui\imgui.h" />
+    <ClInclude Include="vendor\imGui\imgui_impl_glfw.h" />
+    <ClInclude Include="vendor\imGui\imgui_impl_opengl3.h" />
+    <ClInclude Include="vendor\imGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="vendor\imGui\imgui_internal.h" />
+    <ClInclude Include="vendor\imGui\imstb_rectpack.h" />
+    <ClInclude Include="vendor\imGui\imstb_textedit.h" />
+    <ClInclude Include="vendor\imGui\imstb_truetype.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
+    <ClInclude Include="include\Expo\world_plan.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Expo\AdventureSection.cpp" />
+    <ClCompile Include="src\Expo\Car\DrivableCar.cpp" />
+    <ClCompile Include="src\Expo\Car\playerCar.cpp" />
+    <ClCompile Include="src\DebugTriangle.cpp" />
+    <ClCompile Include="src\Expo\Car\Wheel.cpp" />
+    <ClCompile Include="src\Expo\drabzen.cpp" />
+    <ClCompile Include="src\Expo\buildings.cpp" />
+    <ClCompile Include="src\Expo\Electronic\electronic_room.cpp" />
+    <ClCompile Include="src\Expo\Electronic\laptop.cpp" />
+    <ClCompile Include="src\Expo\Electronic\tv.cpp" />
+    <ClCompile Include="src\Expo\HeritageSection.cpp" />
+    <ClCompile Include="src\Expo\InnovationSection.cpp" />
+    <ClCompile Include="src\Expo\Library\book.cpp" />
+    <ClCompile Include="src\Expo\Library\book2.cpp" />
+    <ClCompile Include="src\Expo\Library\booklab.cpp" />
+    <ClCompile Include="src\Expo\Library\ceil.cpp" />
+    <ClCompile Include="src\Expo\Library\clock.cpp" />
+    <ClCompile Include="src\Expo\Library\counterL.cpp" />
+    <ClCompile Include="src\Expo\Library\floor.cpp" />
+    <ClCompile Include="src\Expo\Library\LibraryRoom.cpp" />
+    <ClCompile Include="src\Expo\Library\rectable.cpp" />
+    <ClCompile Include="src\Expo\Library\shelf.cpp" />
+    <ClCompile Include="src\Expo\Library\signboard.cpp" />
+    <ClCompile Include="src\Expo\Library\table.cpp" />
+    <ClCompile Include="src\Expo\Library\wall.cpp" />
+    <ClCompile Include="src\Expo\Resturant\decorated_wall\DecoratedWall.cpp" />
+    <ClCompile Include="src\Expo\Resturant\RestaurantRoom.cpp" />
+    <ClCompile Include="src\Expo\Resturant\window\ResturantWindow.cpp" />
+    <ClCompile Include="src\Expo\Room.cpp" />
+    <ClCompile Include="src\Expo\VelocitySection.cpp" />
+    <ClCompile Include="src\Expo\World.cpp" />
+    <ClCompile Include="src\objects\Cylinder.cpp" />
+    <ClCompile Include="src\Expo\Expo.cpp" />
+    <ClCompile Include="src\objects\Box.cpp" />
+    <ClCompile Include="src\core\Application.cpp" />
+    <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\objects\MovingDoor.cpp" />
+    <ClCompile Include="src\objects\Square.cpp" />
+    <ClCompile Include="src\opengl\EBO.cpp" />
+    <ClCompile Include="src\opengl\Shader.cpp" />
+    <ClCompile Include="src\opengl\Texture.cpp" />
+    <ClCompile Include="src\opengl\VAO.cpp" />
+    <ClCompile Include="src\opengl\VBO.cpp" />
+    <ClCompile Include="src\objects\Object.cpp" />
+    <ClCompile Include="src\Expo\Resturant\Chair.cpp" />
+    <ClCompile Include="src\Scene\Camera.cpp" />
+    <ClCompile Include="src\Scene\Lights\LightHelper.cpp" />
+    <ClCompile Include="src\Scene\Model\ModelObject.cpp" />
+    <ClCompile Include="src\Scene\Renderer.cpp" />
+    <ClCompile Include="src\Scene\Scene.cpp" />
+    <ClCompile Include="src\utils\GLErrorManager.cpp" />
+    <ClCompile Include="src\utils\myImGuiManager.cpp" />
+    <ClCompile Include="src\Expo\Electronic\table_electronic.cpp" />
+    <ClCompile Include="vendor\imGui\imgui.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_demo.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_draw.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_tables.cpp" />
+    <ClCompile Include="vendor\imGui\imgui_widgets.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Expo\world_plan.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\fragment for colord cube with lights , no textures.frag" />
+    <None Include="assets\shaders\fragment.frag" />
+    <None Include="assets\shaders\fragSh.frag" />
+    <None Include="assets\shaders\light_cube.frag" />
+    <None Include="assets\shaders\light_cube.vert" />
+    <None Include="assets\shaders\model_loading.frag" />
+    <None Include="assets\shaders\model_loading.vert" />
+    <None Include="assets\shaders\model_loading_Lights.frag" />
+    <None Include="assets\shaders\model_loading_Lights.vert" />
+    <None Include="assets\shaders\multiple_lights.frag" />
+    <None Include="assets\shaders\multiple_lights.vert" />
+    <None Include="assets\shaders\skybox.frag" />
+    <None Include="assets\shaders\skybox.vert" />
+    <None Include="assets\shaders\vertex.vert" />
+    <None Include="assets\shaders\vertexSh.vert" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
