@@ -1,14 +1,15 @@
-﻿#pragma once
+﻿// داخل ملف Spotlight.h
+#pragma once
 #include "Object.h"
 #include "Box.h"
 #include "Cylinder.h"
 #include <glm/glm.hpp>
 #include <vector>
 
-class Chair : public Object {
+class Spotlight : public Object {
 public:
-    Chair();
-    ~Chair();
+    Spotlight();
+    ~Spotlight();
 
     void setPosition(const glm::vec3& pos);
     void setRotation(float angle, const glm::vec3& axis);
@@ -21,22 +22,16 @@ public:
     void onImguiRender();
 
 private:
-    void setTex();
+    void setTextures();
     glm::mat4 getModelMatrix();
 
-    // الأجزاء (Boxes)
-    Box m_Seat;
-    Box m_Backrest;
-    Box m_ArmrestL;
-    Box m_ArmrestR;
+    Cylinder m_Housing;   // الجسم الخارجي للمبة
+    Box m_Lens;            // الزجاج الأمامي
+    Cylinder m_Handle;     // المقبض العلوي
 
-    // الأرجل (Cylinders) - تم تعريفها منفصلة مثل Table تماماً
-    Cylinder m_LegFL;
-    Cylinder m_LegFR;
-    Cylinder m_LegBL;
-    Cylinder m_LegBR;
+    Cylinder m_Base;       // العصا الطويلة
+    Cylinder m_Stand;      // القاعدة السفلية
 
-    // متغيرات التحول
     glm::vec3 m_Position;
     float m_RotationAngle;
     glm::vec3 m_RotationAxis;
