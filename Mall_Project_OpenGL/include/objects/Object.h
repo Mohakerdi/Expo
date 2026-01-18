@@ -13,6 +13,11 @@ public:
 	{
 	};
 	~Object() {};
+
+	float m_Pitch = 0.0f;
+	float m_Yaw = 0.0f;
+	float m_Roll = 0.0f;
+
 	virtual void drawOpaque() = 0;
 	virtual void drawTransparent() {};
 	virtual void getTransparent() {};
@@ -46,7 +51,7 @@ public:
 	void setTargetRotation(float targetAngle, const glm::vec3& targetAxis);
 
 	void setTargetScale(const glm::vec3& targetScale);
-
+	void setRotationEuler(float pitch, float yaw, float roll);
 	void update();
 };
 

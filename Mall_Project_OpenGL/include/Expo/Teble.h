@@ -5,10 +5,10 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-class Chair : public Object {
+class Table : public Object {
 public:
-    Chair();
-    ~Chair();
+    Table();
+    ~Table();
 
     void setPosition(const glm::vec3& pos);
     void setRotation(float angle, const glm::vec3& axis);
@@ -17,26 +17,21 @@ public:
     void update(float dt);
     void drawOpaque();
     void drawTransparent();
-    void getTransparent();
-    void onImguiRender();
 
 private:
-    void setTex();
+    void setTextures();
     glm::mat4 getModelMatrix();
 
-    // الأجزاء (Boxes)
-    Box m_Seat;
-    Box m_Backrest;
-    Box m_ArmrestL;
-    Box m_ArmrestR;
+    // Box للسطح
+    Box m_TableTop;
 
-    // الأرجل (Cylinders) - تم تعريفها منفصلة مثل Table تماماً
+    // Cylinders للأرجل
     Cylinder m_LegFL;
     Cylinder m_LegFR;
     Cylinder m_LegBL;
     Cylinder m_LegBR;
 
-    // متغيرات التحول
+    // متغيرات التحول (Transformations) لتصحيح Error m_Scale
     glm::vec3 m_Position;
     float m_RotationAngle;
     glm::vec3 m_RotationAxis;
