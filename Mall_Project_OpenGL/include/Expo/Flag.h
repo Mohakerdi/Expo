@@ -5,10 +5,10 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-class Chair : public Object {
+class Flag : public Object {
 public:
-    Chair();
-    ~Chair();
+    Flag();
+    ~Flag();
 
     void setPosition(const glm::vec3& pos);
     void setRotation(float angle, const glm::vec3& axis);
@@ -21,22 +21,12 @@ public:
     void onImguiRender();
 
 private:
-    void setTex();
+    void setTextures();
     glm::mat4 getModelMatrix();
 
-    // الأجزاء (Boxes)
-    Box m_Seat;
-    Box m_Backrest;
-    Box m_ArmrestL;
-    Box m_ArmrestR;
+    Box m_SignBoard;     // اللوحة
+    Cylinder m_Pole;      // العمود
 
-    // الأرجل (Cylinders) - تم تعريفها منفصلة مثل Table تماماً
-    Cylinder m_LegFL;
-    Cylinder m_LegFR;
-    Cylinder m_LegBL;
-    Cylinder m_LegBR;
-
-    // متغيرات التحول
     glm::vec3 m_Position;
     float m_RotationAngle;
     glm::vec3 m_RotationAxis;

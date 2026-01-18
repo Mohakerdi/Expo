@@ -214,6 +214,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Expo\Car\InnovationCar.h">
+    <ClInclude Include="include\Expo\Car\JeepCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Expo\Teble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Expo\Spotlight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Expo\Flag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Expo\Poster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -372,6 +385,19 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Expo\Car\InnovationCar.cpp">
+    <ClCompile Include="src\Expo\Car\JeepCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Expo\Table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Expo\Spotlight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Expo\Flag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Expo\Poster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

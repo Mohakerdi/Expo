@@ -1,14 +1,14 @@
 ﻿#pragma once
 #include "Object.h"
 #include "Box.h"
-#include "Cylinder.h"
 #include <glm/glm.hpp>
-#include <vector>
+#include <string>
 
-class Chair : public Object {
+class Poster : public Object {
 public:
-    Chair();
-    ~Chair();
+    // أضفنا width و height كمعاملات
+    Poster(std::string texturePath, float width = 20.0f, float height = 15.0f);
+    ~Poster();
 
     void setPosition(const glm::vec3& pos);
     void setRotation(float angle, const glm::vec3& axis);
@@ -24,19 +24,9 @@ private:
     void setTex();
     glm::mat4 getModelMatrix();
 
-    // الأجزاء (Boxes)
-    Box m_Seat;
-    Box m_Backrest;
-    Box m_ArmrestL;
-    Box m_ArmrestR;
+    Box m_Plane;
+    std::string m_TexturePath;
 
-    // الأرجل (Cylinders) - تم تعريفها منفصلة مثل Table تماماً
-    Cylinder m_LegFL;
-    Cylinder m_LegFR;
-    Cylinder m_LegBL;
-    Cylinder m_LegBR;
-
-    // متغيرات التحول
     glm::vec3 m_Position;
     float m_RotationAngle;
     glm::vec3 m_RotationAxis;
