@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket;include\Mall\Library;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket;</AdditionalIncludeDirectories>
       <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;;include\Mall\Electronic;include\Mall\Library;include\Mall\Supermarket</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;;include\Mall\Electronic;include\Mall\Supermarket</AdditionalIncludeDirectories>
       <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket;include\Mall\Library</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket</AdditionalIncludeDirectories>
       <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Library;include\Mall\Supermarket</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\include;vendor;src;assets;include;include\core;include\opengl;include\utils;include\Scene;include\objects;include\Scene\Lights;include\Scene\Model;include\Mall;include\Mall\Resturant;include\Mall\Electronic;include\Mall\Supermarket</AdditionalIncludeDirectories>
       <AdditionalOptions> /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -161,6 +161,9 @@
   <ItemGroup>
     <ClInclude Include="include\Expo\AdventureSection.h" />
     <ClInclude Include="include\Expo\Car\ClassicCar.h" />
+    <ClInclude Include="include\Expo\Car\DrivableCar.h" />
+    <ClInclude Include="include\Expo\Car\InnovationCar.h" />
+    <ClInclude Include="include\Expo\Car\JeepCar.h" />
     <ClInclude Include="include\Expo\Car\Wheel.h" />
     <ClInclude Include="include\Expo\drabzen.h" />
     <ClInclude Include="include\Expo\buildings.h" />
@@ -169,27 +172,18 @@
     <ClInclude Include="include\Expo\Electronic\tv.h" />
     <ClInclude Include="include\Expo\HeritageSection.h" />
     <ClInclude Include="include\Expo\InnovationSection.h" />
-    <ClInclude Include="include\Expo\Library\book.h" />
-    <ClInclude Include="include\Expo\Library\book2.h" />
-    <ClInclude Include="include\Expo\Library\booklab.h" />
-    <ClInclude Include="include\Expo\Library\ceil.h" />
-    <ClInclude Include="include\Expo\Library\clock.h" />
-    <ClInclude Include="include\Expo\Library\counterL.h" />
-    <ClInclude Include="include\Expo\Library\floor.h" />
-    <ClInclude Include="include\Expo\Library\LibraryRoom.h" />
-    <ClInclude Include="include\Expo\Library\rectable.h" />
-    <ClInclude Include="include\Expo\Library\shelf.h" />
-    <ClInclude Include="include\Expo\Library\signboard.h" />
-    <ClInclude Include="include\Expo\Library\table.h" />
-    <ClInclude Include="include\Expo\Library\wall.h" />
+    <ClInclude Include="include\Expo\Poster.h" />
     <ClInclude Include="include\Expo\Resturant\decorated_wall\DecoratedWall.h" />
     <ClInclude Include="include\Expo\Resturant\RestaurantRoom.h" />
     <ClInclude Include="include\Expo\Resturant\window\ResturantWindow.h" />
     <ClInclude Include="include\Expo\Room.h" />
     <ClInclude Include="include\Expo\SectionBase.h" />
     <ClInclude Include="include\Expo\SkyBox.h" />
+    <ClInclude Include="include\Expo\Spotlight.h" />
+    <ClInclude Include="include\Expo\Teble.h" />
     <ClInclude Include="include\Expo\VelocitySection.h" />
     <ClInclude Include="include\Expo\World.h" />
+    <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\objects\Cylinder.h" />
     <ClInclude Include="include\objects\Box.h" />
     <ClInclude Include="include\core.h" />
@@ -226,19 +220,7 @@
     <ClInclude Include="include\Expo\Electronic\table_electronic.h" />
     <ClInclude Include="include\Expo\Car\playerCar.h" />
     <ClInclude Include="src\DebugTriangle.h" />
-    <ClInclude Include="src\Mall\Library\book.h" />
-    <ClInclude Include="src\Mall\Library\book2.h" />
-    <ClInclude Include="src\Mall\Library\booklab.h" />
-    <ClInclude Include="src\Mall\Library\ceil.h" />
-    <ClInclude Include="src\Mall\Library\clock.h" />
-    <ClInclude Include="src\Mall\Library\counter.h" />
-    <ClInclude Include="src\Mall\Library\floor.h" />
-    <ClInclude Include="src\Mall\Library\LibraryRoom.h" />
-    <ClInclude Include="src\Mall\Library\rectable.h" />
-    <ClInclude Include="src\Mall\Library\shelf.h" />
-    <ClInclude Include="src\Mall\Library\signboard.h" />
-    <ClInclude Include="src\Mall\Library\table.h" />
-    <ClInclude Include="src\Mall\Library\wall.h" />
+    <ClInclude Include="include\Expo\Flag.h" />
     <ClInclude Include="vendor\imGui\imconfig.h" />
     <ClInclude Include="vendor\imGui\imgui.h" />
     <ClInclude Include="vendor\imGui\imgui_impl_glfw.h" />
@@ -254,6 +236,9 @@
   <ItemGroup>
     <ClCompile Include="src\Expo\AdventureSection.cpp" />
     <ClCompile Include="src\Expo\Car\ClassicCar.cpp" />
+    <ClCompile Include="src\Expo\Car\DrivableCar.cpp" />
+    <ClCompile Include="src\Expo\Car\InnovationCar.cpp" />
+    <ClCompile Include="src\Expo\Car\JeepCar.cpp" />
     <ClCompile Include="src\Expo\Car\playerCar.cpp" />
     <ClCompile Include="src\DebugTriangle.cpp" />
     <ClCompile Include="src\Expo\Car\Wheel.cpp" />
@@ -262,25 +247,16 @@
     <ClCompile Include="src\Expo\Electronic\electronic_room.cpp" />
     <ClCompile Include="src\Expo\Electronic\laptop.cpp" />
     <ClCompile Include="src\Expo\Electronic\tv.cpp" />
+    <ClCompile Include="src\Expo\Flag.cpp" />
     <ClCompile Include="src\Expo\HeritageSection.cpp" />
     <ClCompile Include="src\Expo\InnovationSection.cpp" />
-    <ClCompile Include="src\Expo\Library\book.cpp" />
-    <ClCompile Include="src\Expo\Library\book2.cpp" />
-    <ClCompile Include="src\Expo\Library\booklab.cpp" />
-    <ClCompile Include="src\Expo\Library\ceil.cpp" />
-    <ClCompile Include="src\Expo\Library\clock.cpp" />
-    <ClCompile Include="src\Expo\Library\counterL.cpp" />
-    <ClCompile Include="src\Expo\Library\floor.cpp" />
-    <ClCompile Include="src\Expo\Library\LibraryRoom.cpp" />
-    <ClCompile Include="src\Expo\Library\rectable.cpp" />
-    <ClCompile Include="src\Expo\Library\shelf.cpp" />
-    <ClCompile Include="src\Expo\Library\signboard.cpp" />
-    <ClCompile Include="src\Expo\Library\table.cpp" />
-    <ClCompile Include="src\Expo\Library\wall.cpp" />
+    <ClCompile Include="src\Expo\Poster.cpp" />
     <ClCompile Include="src\Expo\Resturant\decorated_wall\DecoratedWall.cpp" />
     <ClCompile Include="src\Expo\Resturant\RestaurantRoom.cpp" />
     <ClCompile Include="src\Expo\Resturant\window\ResturantWindow.cpp" />
     <ClCompile Include="src\Expo\Room.cpp" />
+    <ClCompile Include="src\Expo\Spotlight.cpp" />
+    <ClCompile Include="src\Expo\Table.cpp" />
     <ClCompile Include="src\Expo\VelocitySection.cpp" />
     <ClCompile Include="src\Expo\World.cpp" />
     <ClCompile Include="src\objects\Cylinder.cpp" />

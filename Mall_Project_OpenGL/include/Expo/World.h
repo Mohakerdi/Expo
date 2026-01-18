@@ -4,7 +4,7 @@
 #include "Expo/Expo.h"
 #include "Box.h"
 #include <memory>
-#include <Expo/Car/playerCar.h>
+//#include <Expo/Car/playerCar.h>
 
 class World : public Object
 {

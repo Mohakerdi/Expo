@@ -46,7 +46,7 @@ void WorldPlan::drawOpaque()
 	mall.setParentModel(getModel());
 	buildings.setParentModel(getModel());
 	bahra.setParentModel(getModel());
-	tree1.setParentModel(getModel());
+
 
 	plan1.drawOpaque();
 	plan2.drawOpaque();
@@ -58,21 +58,6 @@ void WorldPlan::drawOpaque()
 	bahra.setScale(0.02);
 	bahra.drawOpaque();
 	
-	tree1.setRotation(0, glm::vec3(1.0f, 0.0f, 0.0f));
-	tree1.setScale(0.2);
-	tree1.setPosition(glm::vec3(-20.0f, 0.2f, +105.5f));
-	tree1.drawOpaque();
-	tree1.setPosition(glm::vec3(-20.0f, 0.2f, +85.5f));
-	tree1.drawOpaque();
-	tree1.setPosition(glm::vec3(50.0f, 0.2f, +105.5f));
-	tree1.drawOpaque();
-	tree1.setPosition(glm::vec3(50.0f, 0.2f, +85.5f));
-	tree1.drawOpaque();
-	tree1.setRotation(-90, glm::vec3(0.0f, 1.0f, 0.0f));
-	tree1.setPosition(glm::vec3(65.0f, 0.2f, +85.5f));
-	tree1.drawOpaque();
-	tree1.setPosition(glm::vec3(-65.0f, 0.2f, +85.5f));
-	tree1.drawOpaque();
 
 
 	street1.setPosition(glm::vec3(-75.0f, 0.04f, 0.0f));
@@ -101,6 +86,23 @@ void WorldPlan::drawOpaque()
 
 void WorldPlan::getTransparent()
 {
+	tree1.setParentModel(getModel());
+
+	tree1.setRotation(0, glm::vec3(1.0f, 0.0f, 0.0f));
+	tree1.setScale(0.2);
+	tree1.setPosition(glm::vec3(-20.0f, 0.2f, +105.5f));
+	tree1.drawOpaque();
+	tree1.setPosition(glm::vec3(-20.0f, 0.2f, +85.5f));
+	tree1.drawOpaque();
+	tree1.setPosition(glm::vec3(50.0f, 0.2f, +105.5f));
+	tree1.drawOpaque();
+	tree1.setPosition(glm::vec3(50.0f, 0.2f, +85.5f));
+	tree1.drawOpaque();
+	tree1.setRotation(-90, glm::vec3(0.0f, 1.0f, 0.0f));
+	tree1.setPosition(glm::vec3(65.0f, 0.2f, +85.5f));
+	tree1.drawOpaque();
+	tree1.setPosition(glm::vec3(-65.0f, 0.2f, +85.5f));
+	tree1.drawOpaque();
 
 }
 
