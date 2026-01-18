@@ -19,8 +19,6 @@ void World::init()
             "assets/textures/skybox1/back.jpg"
     }
     );
-
-    //ground.setPosition(glm::vec3(0.0f, -2.0f, 0.0f));
     
 }
 
@@ -28,7 +26,6 @@ void World::drawOpaque()
 {
     drawSkyBox();
     expo.drawOpaque();
-    //ground.drawOpaque();
 }
 void World::update(GLFWwindow* window, float dt) {
   

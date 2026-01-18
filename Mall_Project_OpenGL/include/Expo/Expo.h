@@ -26,8 +26,7 @@ public:
     void drawTransparent() override;
     void getTransparent() override;
     void onImguiRender() override;
-    void update(GLFWwindow* window, float dt); // <--- ADD THIS
-
+    void update(GLFWwindow* window, float dt);
 
 private:
     void buildStructure();
@@ -42,8 +41,7 @@ private:
     Box m_Roof;
     ModelObject gears;
 
-    // Removed m_FrontGlass, merging everything into m_GlassWalls
-    std::vector<Box*> m_GlassWalls; // Contains Exterior Facades + Interior Dividers
+    std::vector<Box*> m_GlassWalls; 
 
     std::vector<Cylinder*> m_StructuralColumns;
     std::vector<Box*> m_MezzanineRailings;
@@ -57,5 +55,8 @@ private:
     AdventureSection* m_SectionAdventure;
     VelocitySection* m_SectionVelocity;
 
-    MovingDoor* m_EntranceDoor; // <--- Add this
+    // --- DOORS ---
+    MovingDoor* m_EntranceDoor; 
+    MovingDoor* m_InteriorDoor1; 
+    MovingDoor* m_InteriorDoor2;
 };

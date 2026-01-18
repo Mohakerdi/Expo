@@ -1,13 +1,11 @@
 #include "Expo/Expo.h"
 #include "Scene.h"
 
-// --- CONFIGURATION CONSTANTS ---
 const float FLOOR_WIDTH = 100.0f;
 const float FLOOR_DEPTH = 80.0f;
 const float FLOOR_Y = 0.0f;
 const float MEZZANINE_Y = 12.0f;
 
-// Calculate room widths (3 rooms on ground floor)
 const float ROOM_WIDTH = FLOOR_WIDTH / 5.0f;
 
 Expo::Expo() :
@@ -15,7 +13,9 @@ Expo::Expo() :
     m_GroundFloor(FLOOR_WIDTH, 0.5f, FLOOR_DEPTH, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0)),
     m_SecondFloor(FLOOR_WIDTH, 0.5f, FLOOR_DEPTH, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0)),
     m_Roof(FLOOR_WIDTH, 0.5f, FLOOR_DEPTH, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0)),
-    gears("assets/obj/gears/scene.gltf", "assets/shaders/model_loading.vert", "assets/shaders/model_loading.frag")
+    gears("assets/obj/gears/scene.gltf", "assets/shaders/model_loading.vert", "assets/shaders/model_loading.frag"),
+    m_InteriorDoor1(nullptr),
+    m_InteriorDoor2(nullptr)
 {
     m_EntranceDoor = new MovingDoor(
         glm::vec3(0.0f, 3.8f, FLOOR_DEPTH / 2.0f - 0.2f), // Center Position
@@ -30,6 +30,7 @@ Expo::Expo() :
     buildStructure();
     gears.setPosition(glm::vec3(3.4f, 12.0f, 40.7f));
     buildLighting();
+    
 
     // --- SECTION PLACEMENT ---
     const float ZONE_W = FLOOR_WIDTH / 2.0f;
@@ -50,10 +51,14 @@ Expo::~Expo() {
     delete m_SectionAdventure;
     delete m_SectionVelocity;
 
+    delete m_EntranceDoor;
+    delete m_InteriorDoor1;
+    delete m_InteriorDoor2;
+
     for (auto* ptr : m_StructuralColumns) delete ptr;
     for (auto* ptr : m_MezzanineRailings) delete ptr;
     for (auto* ptr : m_TrackLights) delete ptr;
-    for (auto* ptr : m_GlassWalls) delete ptr; // Clean up all glass
+    for (auto* ptr : m_GlassWalls) delete ptr;
 }
 
 void Expo::buildStructure() {
@@ -68,6 +73,7 @@ void Expo::buildStructure() {
     m_Roof.setPosition({ 0, MEZZANINE_Y + 10.0f, 0 });
     m_Roof.setAllFacesTexture("assets/textures/plan/concrete.jpg");
 
+    
     // --- EXTERIOR GLASS BOX ---
     const float GLASS_HEIGHT = 15.0f;
     const float GLASS_THICKNESS = 0.2f;
@@ -77,7 +83,7 @@ void Expo::buildStructure() {
     const float doorWidth = 8.0f;
     const float remainingWidth = FLOOR_WIDTH - doorWidth;
     const float panelWidth = remainingWidth / 2.0f;
-    const float doorHeight = 10.0f;   
+    const float doorHeight = 10.0f;
     const float doorCenterY = 2.5f;
     float doorTopY = doorCenterY + (doorHeight / 2.0f);
     float wallTopY = GLASS_HEIGHT;
@@ -86,9 +92,7 @@ void Expo::buildStructure() {
 
 
     // Calculate center positions for the two panels
-    // Left panel center: Half of panel width + half of door width (to the left)
     float leftPanelCenterX = -(panelWidth / 2.0f + doorWidth / 2.0f);
-    // Right panel center
     float rightPanelCenterX = (panelWidth / 2.0f + doorWidth / 2.0f);
 
     // Create Left Panel
@@ -102,9 +106,9 @@ void Expo::buildStructure() {
     glassFrontR->setPosition({ rightPanelCenterX, GLASS_HEIGHT / 2.0f, halfDepth });
     glassFrontR->setAllFacesTexture("assets/textures/glass.png", true);
     m_GlassWalls.push_back(glassFrontR);
-    // --------------------------------------------
+
+    // Transom (Top part of door opening)
     Box* glassFrontUp = new Box(doorWidth, transomHeight, GLASS_THICKNESS, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
-    // Position it centered X, at calculated Y, at Z depth
     glassFrontUp->setPosition({ 0.0f, transomCenterY, halfDepth });
     glassFrontUp->setAllFacesTexture("assets/textures/glass.png", true);
     m_GlassWalls.push_back(glassFrontUp);
@@ -127,18 +131,70 @@ void Expo::buildStructure() {
     glassRight->setAllFacesTexture("assets/textures/glass.png", true);
     m_GlassWalls.push_back(glassRight);
 
-    // --- INTERIOR DIVIDERS ---
-    // Divider 1 (Between Innovation and Heritage)
-    Box* glass1 = new Box(0.2f, 12.0f, FLOOR_DEPTH, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
-    glass1->setPosition({ -ROOM_WIDTH, MEZZANINE_Y / 2.0f, 0 });
-    glass1->setAllFacesTexture("assets/textures/glass.png", true);
-    m_GlassWalls.push_back(glass1);
+    // --- INTERIOR DIVIDERS (UPDATED FOR DOORS) ---
 
-    // Divider 2 (Between Heritage and Adventure)
-    Box* glass2 = new Box(0.2f, 12.0f, FLOOR_DEPTH, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
-    glass2->setPosition({ ROOM_WIDTH, MEZZANINE_Y / 2.0f, 0 });
-    glass2->setAllFacesTexture("assets/textures/glass.png", true);
-    m_GlassWalls.push_back(glass2);
+    // Wall Dimensions
+    const float dividerTotalHeight = 12.0f;
+    const float dividerY = MEZZANINE_Y / 2.0f;
+    const float dividerThick = 0.2f;
+    const float dividerDepth = FLOOR_DEPTH; // 80.0
+
+    // Door Config
+    const float interiorDoorWidth = 6.0f;  // Width along Z axis (since door is rotated)
+    const float interiorDoorHeight = 12.0f;
+    const float interiorDoorThick = 0.2f;
+
+    // Calculate Z-axis Split (Left/Right Panels)
+    float remainingDepth = dividerDepth - interiorDoorWidth;
+    float panelDepth = remainingDepth / 2.0f; // Width of the glass panels on Z axis
+
+    float panelHeight = 12.0f;
+
+    // Z Positions for Panels
+    float zPanelLeft = -(panelDepth / 2.0f + interiorDoorWidth / 2.0f);
+    float zPanelRight = (panelDepth / 2.0f + interiorDoorWidth / 2.0f);
+
+    // Y Positions for Panels
+    
+    Box* glass1_L = new Box(dividerThick, panelHeight, panelDepth, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
+    glass1_L->setPosition({ -ROOM_WIDTH, dividerY, zPanelLeft });
+    glass1_L->setAllFacesTexture("assets/textures/glass.png", true);
+    m_GlassWalls.push_back(glass1_L);
+
+    Box* glass1_R = new Box(dividerThick, panelHeight, panelDepth, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
+    glass1_R->setPosition({ -ROOM_WIDTH, dividerY, zPanelRight });
+    glass1_R->setAllFacesTexture("assets/textures/glass.png", true);
+    m_GlassWalls.push_back(glass1_R);
+
+    // 1.5 Moving Door (Center) - Rotated -90 to face +X (Innovation -> Heritage)
+    m_InteriorDoor1 = new MovingDoor(
+        glm::vec3(-ROOM_WIDTH, dividerY, 0.0f),
+        interiorDoorWidth, interiorDoorHeight, interiorDoorThick,
+        "assets/shaders/vertexSh.vert",
+        "assets/shaders/fragSh.frag"
+    );
+    m_InteriorDoor1->setRotation(90.0f, glm::vec3(0, 1, 0));
+    m_InteriorDoor1->setAllTextures("assets/textures/glass.png", true);
+
+    Box* glass2_L = new Box(dividerThick, panelHeight, panelDepth, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
+    glass2_L->setPosition({ ROOM_WIDTH, dividerY, zPanelLeft });
+    glass2_L->setAllFacesTexture("assets/textures/glass.png", true);
+    m_GlassWalls.push_back(glass2_L);
+
+    Box* glass2_R = new Box(dividerThick, panelHeight, panelDepth, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
+    glass2_R->setPosition({ ROOM_WIDTH, dividerY, zPanelRight });
+    glass2_R->setAllFacesTexture("assets/textures/glass.png", true);
+    m_GlassWalls.push_back(glass2_R);
+
+    // 2.5 Moving Door (Center) - Rotated 90 to face -X (Adventure -> Heritage)
+    m_InteriorDoor2 = new MovingDoor(
+        glm::vec3(ROOM_WIDTH, dividerY, 0.0f),
+        interiorDoorWidth, interiorDoorHeight, interiorDoorThick,
+        "assets/shaders/vertexSh.vert",
+        "assets/shaders/fragSh.frag"
+    );
+    m_InteriorDoor2->setRotation(90.0f, glm::vec3(0, 1, 0));
+    m_InteriorDoor2->setAllTextures("assets/textures/glass.png", true);
 
     // --- COLUMNS ---
     float colH = (MEZZANINE_Y + 10.0f) - 0.5f;
@@ -198,12 +254,12 @@ void Expo::buildLighting() {
             m_TrackLights.push_back(lightStrip);
 
             Box* cableL = new Box(0.05f, 1.0f, 0.05f, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
-            cableL->setPosition({ roomCenterX - (ROOM_WIDTH / 4.0f) , 3*lightY/ 2.0f - MEZZANINE_Y/2+1.1f, stripZ });
+            cableL->setPosition({ roomCenterX - (ROOM_WIDTH / 4.0f) , 3 * lightY / 2.0f - MEZZANINE_Y / 2 + 1.1f, stripZ });
             cableL->setAllFacesTexture("assets/textures/car/dark_grey_metal.jpg");
             m_TrackLights.push_back(cableL);
 
             Box* cableR = new Box(0.05f, 1.0f, 0.05f, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", {}, glm::vec3(0));
-            cableR->setPosition({ roomCenterX + (ROOM_WIDTH / 4.0f) ,  3*lightY/ 2.0f - MEZZANINE_Y / 2+1.1f, stripZ });
+            cableR->setPosition({ roomCenterX + (ROOM_WIDTH / 4.0f) ,  3 * lightY / 2.0f - MEZZANINE_Y / 2 + 1.1f, stripZ });
             cableR->setAllFacesTexture("assets/textures/car/dark_grey_metal.jpg");
             m_TrackLights.push_back(cableR);
         }
@@ -216,7 +272,7 @@ void Expo::buildLighting() {
 
 void Expo::drawOpaque() {
     m_WorldPlan.drawOpaque();
-    
+
     m_GroundFloor.drawOpaque();
     m_SecondFloor.drawOpaque();
     m_Roof.drawOpaque();
@@ -233,6 +289,8 @@ void Expo::drawOpaque() {
     if (m_SectionVelocity)    m_SectionVelocity->drawOpaque();
 
     if (m_EntranceDoor) m_EntranceDoor->drawOpaque();
+    if (m_InteriorDoor1) m_InteriorDoor1->drawOpaque();
+    if (m_InteriorDoor2) m_InteriorDoor2->drawOpaque();
 }
 
 void Expo::update(GLFWwindow* window, float dt) {
@@ -243,6 +301,8 @@ void Expo::update(GLFWwindow* window, float dt) {
     if (m_SectionVelocity)    m_SectionVelocity->update(window, dt);
 
     if (m_EntranceDoor) m_EntranceDoor->update();
+    if (m_InteriorDoor1) m_InteriorDoor1->update();
+    if (m_InteriorDoor2) m_InteriorDoor2->update();
 }
 
 void Expo::drawTransparent() {
@@ -259,7 +319,8 @@ void Expo::drawTransparent() {
     if (m_SectionVelocity)    m_SectionVelocity->drawTransparent();
 
     if (m_EntranceDoor) m_EntranceDoor->drawTransparent();
-
+    if (m_InteriorDoor1) m_InteriorDoor1->drawTransparent();
+    if (m_InteriorDoor2) m_InteriorDoor2->drawTransparent();
 }
 
 void Expo::getTransparent() {
@@ -267,6 +328,8 @@ void Expo::getTransparent() {
     for (auto* glass : m_GlassWalls) glass->getTransparent();
 
     if (m_EntranceDoor) m_EntranceDoor->getTransparent();
+    if (m_InteriorDoor1) m_InteriorDoor1->getTransparent();
+    if (m_InteriorDoor2) m_InteriorDoor2->getTransparent();
 }
 
 void Expo::onImguiRender() {}

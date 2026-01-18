@@ -10,11 +10,6 @@ TV::TV(int type) :
 
 void TV::drawOpaque() {
 	
-	//Postions 
-	
-	//Draw
-
-	
 }
 
 void TV::getTransparent() {
