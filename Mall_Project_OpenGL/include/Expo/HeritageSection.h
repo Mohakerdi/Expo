@@ -1,6 +1,6 @@
-#pragma once
+ #pragma once
 #include "SectionBase.h"
-#include "Expo/Car/playerCar.h" // <--- ADD THIS INCLUDE
+#include "Expo/Car/playerCar.h" 
 
 class HeritageSection : public SectionBase {
 public:
@@ -9,7 +9,7 @@ public:
 
     void drawOpaque() override;
     void drawTransparent() override;
-    void update(GLFWwindow* window, float dt) override; // <--- ADD THIS
+    void update(GLFWwindow* window, float dt) override;
     void getTransparent() override;
 
 
@@ -17,6 +17,6 @@ public:
 private:
     void build();
 
-    // <--- ADD MEMBER VARIABLE FOR THE NEW CAR
+ 
     PlayerCar* m_Car;
 };

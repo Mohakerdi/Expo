@@ -4,49 +4,53 @@
 class Object
 {
 public:
-	Object() :
-		m_Model(1.0f), m_ParentModel(1.0f),
-		m_RotationAngle(0.0f), m_Position(0.0f),
-		m_RotationAxis(0.0f, 1.0f, 0.0f), m_UniformScale(1.0f), m_NonUniformScale(1.0f), m_Center(0.0f),
-		m_TargetPosition(0.0f), m_TargetRotationAxis(0.0f, 1.0f, 0.0f), m_TargetRotationAngle(0.0f),
-		m_TargetScale(1.0f)
-	{
-	};
-	~Object() {};
-	virtual void drawOpaque() = 0;
-	virtual void drawTransparent() {};
-	virtual void getTransparent() {};
-	virtual void onImguiRender() {}; // For debugging.
-	virtual float dist() { return 0.0f; }; // For distance.
-	void setParentModel(glm::mat4 pModel);
-	void setPosition(const glm::vec3& position);
-	void setRotation(float angle, const glm::vec3& axis);
-	void setScale(const glm::vec3& scale);
-	void setScale(const float& scale);
+    Object() :
+        m_Model(1.0f), m_ParentModel(1.0f),
+        m_RotationAngle(0.0f), m_Position(0.0f),
+        m_RotationAxis(0.0f, 1.0f, 0.0f), m_UniformScale(1.0f), m_NonUniformScale(1.0f), m_Center(0.0f),
+        m_TargetPosition(0.0f), m_TargetRotationAxis(0.0f, 1.0f, 0.0f), m_TargetRotationAngle(0.0f),
+        m_TargetScale(1.0f)
+    {
+    };
+    ~Object() {};
 
-	void updateModelMatrix();
-	glm::mat4 getModel();
-	void setTargetPosition(const glm::vec3& targetPosition);
-	glm::mat4 m_Model, m_ParentModel;
-	glm::vec3 m_Position, m_NonUniformScale, m_RotationAxis, m_Center;
-	float m_RotationAngle, m_UniformScale;
-	glm::vec3 getModifiedPosition(glm::vec3& point);
+    float m_Pitch = 0.0f;
+    float m_Yaw = 0.0f;
+    float m_Roll = 0.0f;
 
-	// Add target state variables
-	glm::vec3 m_TargetPosition;
-	glm::vec3 m_TargetRotationAxis;
-	float m_TargetRotationAngle;
-	glm::vec3 m_TargetScale;
+    virtual void drawOpaque() = 0;
+    virtual void drawTransparent() {};
+    virtual void getTransparent() {};
+    virtual void onImguiRender() {}; // For debugging.
+    virtual float dist() { return 0.0f; }; // For distance.
+    void setParentModel(glm::mat4 pModel);
+    void setPosition(const glm::vec3& position);
+    void setRotation(float angle, const glm::vec3& axis);
+    void setScale(const glm::vec3& scale);
+    void setScale(const float& scale);
 
-	// Speed of interpolation (units per second)
-	float m_MoveSpeed = 20.0f;
-	float m_RotateSpeed = 45.0f; // Degrees per second
-	float m_ScaleSpeed = 1.0f;
+    void updateModelMatrix();
+    glm::mat4 getModel();
+    void setTargetPosition(const glm::vec3& targetPosition);
+    glm::mat4 m_Model, m_ParentModel;
+    glm::vec3 m_Position, m_NonUniformScale, m_RotationAxis, m_Center;
+    float m_RotationAngle, m_UniformScale;
+    glm::vec3 getModifiedPosition(glm::vec3& point);
 
-	void setTargetRotation(float targetAngle, const glm::vec3& targetAxis);
+    // Add target state variables
+    glm::vec3 m_TargetPosition;
+    glm::vec3 m_TargetRotationAxis;
+    float m_TargetRotationAngle;
+    glm::vec3 m_TargetScale;
 
-	void setTargetScale(const glm::vec3& targetScale);
+    // Speed of interpolation (units per second)
+    float m_MoveSpeed = 20.0f;
+    float m_RotateSpeed = 45.0f; // Degrees per second
+    float m_ScaleSpeed = 1.0f;
 
-	void update();
+    void setTargetRotation(float targetAngle, const glm::vec3& targetAxis);
+
+    void setTargetScale(const glm::vec3& targetScale);
+    void setRotationEuler(float pitch, float yaw, float roll);
+    void update();
 };
-
