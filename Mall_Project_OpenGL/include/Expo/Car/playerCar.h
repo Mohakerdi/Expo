@@ -9,7 +9,7 @@ class PlayerCar : public Object
 {
 public:
     PlayerCar();
-    ~PlayerCar() {} // Clean up handled by Box/Cylinder destructors
+    ~PlayerCar() {} 
 
     void UpdateCar(GLFWwindow* window, float dt);
     void drawOpaque() override;
@@ -19,44 +19,37 @@ public:
 private:
     void setTex();
 
-    // --- CAR BODY PARTS ---
-    Box m_ChassisMain;       // Main body
-    Box m_ChassisBottom;    // Undercarriage (Rockers)
-    Box m_Cabin;            // Top part
-    Box m_Roof;             // Roof detail
-    Box m_Hood;             // Front hood detail
+    Box m_ChassisMain;       
+    Box m_ChassisBottom;    
+    Box m_Cabin;            
+    Box m_Roof;             
+    Box m_Hood;             
     Box m_DoorL;
     Box m_DoorR;
 
-    // --- GLASS ---
     Box m_WindshieldFront;
     Box m_WindshieldRear;
     Box m_RearWindow;
 
-    // --- LIGHTS ---
     Box m_HeadlightL;
     Box m_HeadlightR;
     Box m_TaillightL;
     Box m_TaillightR;
 
-    // --- PERFORMANCE PARTS ---
     Box m_SpoilerWing;
     Box m_SpoilerStrutL;
     Box m_SpoilerStrutR;
 
-    // --- STEERING WHEEL (NEW) ---
-    Cylinder m_SteeringWheelRim;  // The outer ring
-    Box m_SteeringWheelSpokeH;    // Horizontal spoke
-    Box m_SteeringWheelSpokeV;    // Vertical spoke
-    Box m_SteeringWheelHub;       // Center connection
+    Cylinder m_SteeringWheelRim;  
+    Box m_SteeringWheelSpokeH;    
+    Box m_SteeringWheelSpokeV;    
+    Box m_SteeringWheelHub;      
 
-    // --- WHEELS ---
     Wheel m_WheelFL;
     Wheel m_WheelFR;
     Wheel m_WheelBL;
     Wheel m_WheelBR;
 
-    // --- STATE ---
     float m_Speed = 0.0f;
     float m_RotationAngle = 0.0f;
     float m_SteerAngle = 0.0f;

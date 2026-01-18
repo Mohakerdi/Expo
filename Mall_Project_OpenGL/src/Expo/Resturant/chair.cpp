@@ -2,30 +2,29 @@
 
 
 Chair::Chair() : 
-    seat(80.0f , 20.0f , 80.0f , "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag")
+    seat(80.0f , 20.0f , 80.0f , "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag"),
+    back(8.0f , 120.0f , 78.0f , "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag")
 {
     rjls.resize(4);
     for (int i = 0; i < 4; i++)
     {
-        rjls[i] = Box(20.0f, 60.0f, 20.0f, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag", { {Face::Front,{3,2}} });
+        rjls[i] = Box(20.0f, 60.0f, 20.0f, "assets/shaders/vertexSh.vert", "assets/shaders/fragSh.frag");
     }
     setTex();
-    //setTargetPosition(glm::vec3(0.0f, 500.0f, 0.0f));
 }
 
 void Chair::drawOpaque() {
-    // !Note: Postoins should not be like this.
     glm::vec3 positions[4] = {
     glm::vec3(30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , 30.0f),
     glm::vec3(30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2, -30.0f),
     glm::vec3(-30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , 30.0f),
     glm::vec3(-30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , -30.0f)
     };
-    //update();
     updateModelMatrix();
     for (int i = 0; i < 4; i++)
     rjls[i].setParentModel(getModel());
     seat.setParentModel(getModel());
+    back.setParentModel(getModel());
 
     for (int i = 0; i < 4; i++) {
     rjls[i].setPosition(positions[i]);
@@ -34,35 +33,18 @@ void Chair::drawOpaque() {
     }
     seat.setPosition(glm::vec3(0.0f , 0.0f , 0.0f));
     seat.drawOpaque();
+    back.setPosition(glm::vec3(35.0f , 60.0f , 0.0f));
+    back.drawOpaque();
 }
 
 void Chair::getTransparent()
 {
-    seat.setParentModel(getModel());
-    // !Note: Postoins should not be like this.
-    glm::vec3 positions[4] = {
-    glm::vec3(30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , 30.0f),
-    glm::vec3(30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2, -30.0f),
-    glm::vec3(-30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , 30.0f),
-    glm::vec3(-30.0f , -seat.getHeight() / 2 - rjls[0].getHeight() / 2 , -30.0f)
-    };
     
-    for (int i = 0; i < 4; i++) {
-        rjls[i].setParentModel(getModel());
-        rjls[i].setPosition(positions[i]);
-        rjls[i].getTransparent();
-    }
-    seat.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-    seat.getTransparent();
 }
 
 void Chair::onImguiRender()
 {
-    ImGui::SliderFloat3("Chair Position", &m_Position.x, -100, 100);
-    int i = 0;
-    for (Box& x : rjls) x.onImguiRender("RJL " + std::to_string(i++));
-    //rjl.onImguiRender("RJL ");
-    //seat.onImguiRender("Seat ");
+    
 }
 
 void Chair::setTex()
@@ -71,19 +53,25 @@ void Chair::setTex()
     for (int i = 0; i < 4; i++)
     {
 
-    rjls[i].setFaceTexture(Face::Up , "assets/textures/awesomeface.png", true);
-    rjls[i].setFaceTexture(Face::Down , "assets/textures/awesomeface.png", true);
-    rjls[i].setFaceTexture(Face::Left , "assets/textures/awesomeface.png", true);
-    rjls[i].setFaceTexture(Face::Right , "assets/textures/arrows.png",false , false , true);
-    rjls[i].setFaceTexture(Face::Back ,  "assets/textures/awesomeface.png", true, true, true);
-    rjls[i].setFaceTexture(Face::Front , "assets/textures/awesomeface.png",true, true , true);
+    rjls[i].setFaceTexture(Face::Up , "assets/textures/chair2.png");
+    rjls[i].setFaceTexture(Face::Down , "assets/textures/chair2.png");
+    rjls[i].setFaceTexture(Face::Left , "assets/textures/chair2.png");
+    rjls[i].setFaceTexture(Face::Right , "assets/textures/chair2.png");
+    rjls[i].setFaceTexture(Face::Back ,  "assets/textures/chair2.png");
+    rjls[i].setFaceTexture(Face::Front , "assets/textures/chair2.png");
     }
 
 
-    seat.setFaceTexture(Face::Up , "assets/textures/oh.png");
-    seat.setFaceTexture(Face::Down, "assets/textures/oh.png");
-    seat.setFaceTexture(Face::Left, "assets/textures/oh.png");
-    seat.setFaceTexture(Face::Right, "assets/textures/oh.png");
-    seat.setFaceTexture(Face::Back, "assets/textures/oh.png");
-    seat.setFaceTexture(Face::Front, "assets/textures/oh.png");
+    seat.setFaceTexture(Face::Up , "assets/textures/chair1.png");
+    seat.setFaceTexture(Face::Down, "assets/textures/chair1.png");
+    seat.setFaceTexture(Face::Left, "assets/textures/chair1.png");
+    seat.setFaceTexture(Face::Right, "assets/textures/chair1.png");
+    seat.setFaceTexture(Face::Back, "assets/textures/chair1.png");
+    seat.setFaceTexture(Face::Front, "assets/textures/chair1.png");
+    back.setFaceTexture(Face::Up , "assets/textures/chair3.png");
+    back.setFaceTexture(Face::Down, "assets/textures/chair3.png");
+    back.setFaceTexture(Face::Left, "assets/textures/chair3.png");
+    back.setFaceTexture(Face::Right, "assets/textures/chair3.png");
+    back.setFaceTexture(Face::Back, "assets/textures/chair3.png");
+    back.setFaceTexture(Face::Front, "assets/textures/chair3.png");
 }

@@ -135,6 +135,6 @@ void Scene::onImguiRender()
 }
 void Scene::init()
 {
-    world.init();   // ⬅️ هنا الصح
+    world.init(); 
 }
 

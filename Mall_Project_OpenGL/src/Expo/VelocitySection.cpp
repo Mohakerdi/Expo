@@ -1,18 +1,14 @@
 #include "Expo/VelocitySection.h"
 #include "Scene.h"
 
-VelocitySection::VelocitySection(glm::vec3 origin) : SectionBase(origin), m_DrivableCar(nullptr) {
+VelocitySection::VelocitySection(glm::vec3 origin) : SectionBase(origin){
     build();
 }
 
 VelocitySection::~VelocitySection() {
     cleanup();
 
-    // <--- CLEAN UP DRIVABLE CAR
-    if (m_DrivableCar) {
-        delete m_DrivableCar;
-        m_DrivableCar = nullptr;
-    }
+    
 }
 
 void VelocitySection::build() {
@@ -30,19 +26,8 @@ void VelocitySection::build() {
     car->setScale(7.0f);
     m_Models.push_back(car);
 
-    // 3. <--- ADD DRIVABLE CAR (The new one) ---
-    m_DrivableCar = new DrivableCar();
 
-    // Position it beside the model car (e.g., to the right on X axis)
-    // It needs to be on the ground (Y=0.5f)
-    m_DrivableCar->setPosition({ m_Origin.x + 8.0f, 0.5f, m_Origin.z });
-
-    // Rotate it 180 degrees to face the same way as the model car (assuming model faces back)
-    m_DrivableCar->setRotation(180.0f, glm::vec3(0, 1, 0));
-    // ------------------------------------
-
-    // 4. Stack of Tires (Cylinders)
-    float tireX = m_Origin.x + 15.0f; // Moved further right to avoid collision with drivable car
+    float tireX = m_Origin.x + 15.0f; 
     float tireZ = m_Origin.z - 5.0f;
     float tireR = 1.0f;
     float tireH = 0.8f;
@@ -67,30 +52,20 @@ void VelocitySection::drawOpaque() {
     for (auto* box : m_Boxes) box->drawOpaque();
     for (auto* cyl : m_Cylinders) cyl->drawOpaque();
     for (auto* model : m_Models) model->drawOpaque();
-
-    // <--- DRAW DRIVABLE CAR
-    if (m_DrivableCar) m_DrivableCar->drawOpaque();
 }
 
 void VelocitySection::drawTransparent() {
     for (auto* box : m_Boxes) box->drawTransparent();
     for (auto* cyl : m_Cylinders) cyl->drawTransparent();
-
-    // <--- DRAW DRIVABLE CAR GLASS
-    if (m_DrivableCar) m_DrivableCar->drawTransparent();
 }
 
 // <--- ADD UPDATE FUNCTION
 void VelocitySection::update(GLFWwindow* window, float dt) {
-    if (m_DrivableCar) {
-        m_DrivableCar->UpdateCar(window, dt);
-    }
+
 }
 
 // <--- ADD GET TRANSPARENT FUNCTION
 void VelocitySection::getTransparent() {
     for (auto* box : m_Boxes) box->getTransparent();
     for (auto* cyl : m_Cylinders) cyl->getTransparent();
-
-    if (m_DrivableCar) m_DrivableCar->getTransparent();
 }

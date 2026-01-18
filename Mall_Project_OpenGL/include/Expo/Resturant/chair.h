@@ -13,5 +13,6 @@ public:
 private:
     std::vector<Box> rjls;
     Box seat;
+    Box back;
     
 };

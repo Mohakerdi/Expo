@@ -20,8 +20,7 @@ public:
 
 
 private:
-    std::unique_ptr<Skybox> skybox;   // ✅ مهم
-    Box ground;
+    std::unique_ptr<Skybox> skybox;
     Expo expo;
     void drawSkyBox();
 };

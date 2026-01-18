@@ -160,7 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\Expo\AdventureSection.h" />
-    <ClInclude Include="include\Expo\Car\DrivableCar.h" />
+    <ClInclude Include="include\Expo\Car\ClassicCar.h" />
     <ClInclude Include="include\Expo\Car\Wheel.h" />
     <ClInclude Include="include\Expo\drabzen.h" />
     <ClInclude Include="include\Expo\buildings.h" />
@@ -253,7 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Expo\AdventureSection.cpp" />
-    <ClCompile Include="src\Expo\Car\DrivableCar.cpp" />
+    <ClCompile Include="src\Expo\Car\ClassicCar.cpp" />
     <ClCompile Include="src\Expo\Car\playerCar.cpp" />
     <ClCompile Include="src\DebugTriangle.cpp" />
     <ClCompile Include="src\Expo\Car\Wheel.cpp" />

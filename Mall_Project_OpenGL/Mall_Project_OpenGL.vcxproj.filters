@@ -285,7 +285,7 @@
     <ClInclude Include="include\Expo\VelocitySection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Expo\Car\DrivableCar.h">
+    <ClInclude Include="include\Expo\Car\ClassicCar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -479,7 +479,7 @@
     <ClCompile Include="src\Expo\VelocitySection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Expo\Car\DrivableCar.cpp">
+    <ClCompile Include="src\Expo\Car\ClassicCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
