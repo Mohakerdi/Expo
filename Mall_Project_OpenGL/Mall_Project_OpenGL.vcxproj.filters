@@ -210,6 +210,10 @@
     <ClInclude Include="include\Expo\Car\DrivableCar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Expo\Car\InnovationCar.h">
     <ClInclude Include="include\Expo\Car\JeepCar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -380,6 +384,7 @@
     <ClCompile Include="src\Expo\Car\DrivableCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Expo\Car\InnovationCar.cpp">
     <ClCompile Include="src\Expo\Car\JeepCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

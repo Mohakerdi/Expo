@@ -4,7 +4,7 @@
 #include "Expo/Expo.h"
 #include "Box.h"
 #include <memory>
-#include <Expo/Car/playerCar.h>
+//#include <Expo/Car/playerCar.h>
 
 class World : public Object
 {
@@ -20,7 +20,7 @@ public:
 
 
 private:
-    std::unique_ptr<Skybox> skybox;   // ✅ مهم
+    std::unique_ptr<Skybox> skybox;   
     Box ground;
     Expo expo;
     void drawSkyBox();

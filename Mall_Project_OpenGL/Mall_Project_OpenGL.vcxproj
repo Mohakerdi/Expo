@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="include\Expo\AdventureSection.h" />
     <ClInclude Include="include\Expo\Car\DrivableCar.h" />
+    <ClInclude Include="include\Expo\Car\InnovationCar.h" />
     <ClInclude Include="include\Expo\Car\JeepCar.h" />
     <ClInclude Include="include\Expo\Car\Wheel.h" />
     <ClInclude Include="include\Expo\drabzen.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="include\Expo\Teble.h" />
     <ClInclude Include="include\Expo\VelocitySection.h" />
     <ClInclude Include="include\Expo\World.h" />
+    <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\objects\Cylinder.h" />
     <ClInclude Include="include\objects\Box.h" />
     <ClInclude Include="include\core.h" />
@@ -233,6 +235,7 @@
   <ItemGroup>
     <ClCompile Include="src\Expo\AdventureSection.cpp" />
     <ClCompile Include="src\Expo\Car\DrivableCar.cpp" />
+    <ClCompile Include="src\Expo\Car\InnovationCar.cpp" />
     <ClCompile Include="src\Expo\Car\JeepCar.cpp" />
     <ClCompile Include="src\Expo\Car\playerCar.cpp" />
     <ClCompile Include="src\DebugTriangle.cpp" />
